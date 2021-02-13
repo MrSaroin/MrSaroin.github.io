@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="zh-cn"><head>
+	<meta name="generator" content="Hugo 0.79.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="referrer" content="strict-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>鲸一导航 - 效率网上冲浪</title>
+  
+  <meta name="description" content="A responsive and clean start page, make your Internet easier as well." />
+   <link rel="icon" href="../images/favicon.jpg" /> 
+
+  <link type="text/css" rel="stylesheet" href="./css/main.css" />
+  <link type="text/css" rel="stylesheet" href="./css/search.css" />
+  <link type="text/css" rel="stylesheet" href="./css/color.css" />
+  
+  
+  
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css"
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" 
+      crossorigin="anonymous" />
+  
+  
+
+  
+  <script src="./js/search.js"></script>
+  <script src="./js/init.js"></script>
+  <script>
+    
+    
+    
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+      init();
+    });
+  </script>
+  
+
+  <style type="text/css">
+  
+  
+    
+      body {
+        background: url(../images/bg.jpg);
+        background-position: top;
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+      }
+    
+  
+  
+
+  
+  
+  
+
+  
+  
+    
+      .u-theme-f, 
+      .search-group>span, 
+      .search-group-list label:hover, 
+      .search-engines li label::first-letter, 
+      .search-engines input:hover+label span, 
+      .search-engines input:checked+label span, 
+      .searchbox input, 
+      #poetry, #poetry-author, 
+      .card ul li:hover *, 
+      .card ul li::first-letter, .card ul li i {
+        color: #5E72E4;
+      }
+
+      .search-engines input:checked+label span, 
+      .searchbox input {
+        border-bottom-color: #5E72E4;
+      }
+
+      #search-button {
+        background-color: #5E72E4;
+      }
+
+      #tooltip {
+        box-shadow: 0 0 5px #5E72E4;;
+      }
+    
+  
+  
+
+  
+  
+    .blur, .card, 
+    .searchbox form:hover, 
+    .searchbox form:focus-within, 
+    .search-group-list, 
+    .search-engines input:hover+label span,
+    .search-engines input:checked+label span {
+      backdrop-filter: blur(.2rem);
+      box-shadow: 0 0 10px rgb(0, 0, 0, 0.3);
+    }
+  
+  
+
+</style>
+
+
+  
+  
+    
+      
+    
+  
+  
+
+</head>
+<body>
+<header>
+  <nav>
+    <div class="nav-left">
+      <ul>
+        
+          <li>
+            <a onclick="window.open(&#34;https://github.com/SylleoYr/hugo-theme-OriginStart&#34;, '_blank')" tooltip-text="GitHub" onmouseover="showTooltip(this);"
+              onmouseout="hideTooltip();"><i class="fab fa-github u-theme-f"></i></a>
+          </li>
+        
+          <li>
+            <a onclick="window.open(&#34;https://gitee.com/SylleoYr/hugo-theme-OriginStart&#34;, '_blank')" tooltip-text="Gitee" onmouseover="showTooltip(this);"
+              onmouseout="hideTooltip();"><i class="fab fa-git-square u-theme-f"></i></a>
+          </li>
+        
+      </ul>
+    </div>
+    <div class="nav-right">
+      <ul class="datetime">
+        <li class="date">
+          <i class="far fa-calendar u-theme-f"></i>&nbsp;
+          <span id="current_date"></span>
+        </li>
+        <li class="time">
+          <i class="far fa-clock u-theme-f"></i>&nbsp;
+          <span id="current_time"></span>
+        </li>
+      </ul>
+    </div>
+
+    
+    
+    <div id="he-plugin-simple"></div>
+    
+    
+    
+  </nav>
+</header>
+<main>
+
+
+
+  <section class="search">
+    <div class="searchbox">
+      
+      <div id="search-list" class="hide-type-list">
+        
+        <div class="search-group">
+          <span id="group-name"></span>
+          <div class="search-group-list">
+            
+              
+                <label for="group-搜索" onclick="changeSearchGroup(this.innerText.trim())">
+                  <span class="tile-lg">
+                    <i class="fas fa-search indigo u-theme-f"></i>
+                  </span>搜索</label>
+              
+            
+              
+            
+              
+                <label for="group-音乐" onclick="changeSearchGroup(this.innerText.trim())">
+                  <span class="tile-lg">
+                    <i class="fas fa-search pink u-theme-f"></i>
+                  </span>音乐</label>
+              
+            
+              
+                <label for="group-电影" onclick="changeSearchGroup(this.innerText.trim())">
+                  <span class="tile-lg">
+                    <i class="fas fa-search cyan u-theme-f"></i>
+                  </span>电影</label>
+              
+            
+          </div> 
+        </div> 
+        
+
+        
+        
+          
+            <div class="group-items" id="group-搜索">
+              <ul class="search-engines">
+                
+                  
+                    <li>
+                      <input type="radio" name="engine" id="engine-百度" 
+                        value="https://www.baidu.com/s?wd={query}&amp;ie=utf-8" hidden onchange="changeSearchEngine(this.value)">
+                      <label for="engine-百度">
+                        <span>百度</span>
+                      </label>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <input type="radio" name="engine" id="engine-Google" 
+                        value="https://google.com/search" hidden onchange="changeSearchEngine(this.value)">
+                      <label for="engine-Google">
+                        <span>Google</span>
+                      </label>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <input type="radio" name="engine" id="engine-Bilibili" 
+                        value="https://search.bilibili.com/all?keyword={query}" hidden onchange="changeSearchEngine(this.value)">
+                      <label for="engine-Bilibili">
+                        <span>Bilibili</span>
+                      </label>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <input type="radio" name="engine" id="engine-知乎" 
+                        value="https://www.zhihu.com/search?type=content&amp;q={query}" hidden onchange="changeSearchEngine(this.value)">
+                      <label for="engine-知乎">
+                        <span>知乎</span>
+                      </label>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <input type="radio" name="engine" id="engine-豆瓣" 
+                        value="https://www.douban.com/search?q={query}" hidden onchange="changeSearchEngine(this.value)">
+                      <label for="engine-豆瓣">
+                        <span>豆瓣</span>
+                      </label>
+                    </li>
+                  
+                
+                  
+                
+                  
+                    <li>
+                      <input type="radio" name="engine" id="engine-GitHub" 
+                        value="https://github.com/search?q={query}&amp;ref=opensearch" hidden onchange="changeSearchEngine(this.value)">
+                      <label for="engine-GitHub">
+                        <span>GitHub</span>
+                      </label>
+                    </li>
+                  
+                
+              </ul>
+            </div> 
+          
+        
+          
+        
+          
+            <div class="group-items" id="group-音乐">
+              <ul class="search-engines">
+                
+                  
+                    <li>
+                      <input type="radio" name="engine" id="engine-ogle" 
+                        value="https://google.com/search" hidden onchange="changeSearchEngine(this.value)">
+                      <label for="engine-ogle">
+                        <span>ogle</span>
+                      </label>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <input type="radio" name="engine" id="engine-ckDuckGo" 
+                        value="https://www.duckduckgo.com" hidden onchange="changeSearchEngine(this.value)">
+                      <label for="engine-ckDuckGo">
+                        <span>ckDuckGo</span>
+                      </label>
+                    </li>
+                  
+                
+              </ul>
+            </div> 
+          
+        
+          
+            <div class="group-items" id="group-电影">
+              <ul class="search-engines">
+                
+                  
+                    <li>
+                      <input type="radio" name="engine" id="engine-Googl" 
+                        value="https://google.com/search" hidden onchange="changeSearchEngine(this.value)">
+                      <label for="engine-Googl">
+                        <span>Googl</span>
+                      </label>
+                    </li>
+                  
+                
+                  
+                    <li>
+                      <input type="radio" name="engine" id="engine-DucuckGo" 
+                        value="https://www.duckduckgo.com" hidden onchange="changeSearchEngine(this.value)">
+                      <label for="engine-DucuckGo">
+                        <span>DucuckGo</span>
+                      </label>
+                    </li>
+                  
+                
+              </ul>
+            </div> 
+          
+        
+      </div> 
+      
+
+      <form height="50px" action="" method="get" target="_blank" id="super-search-fm" onsubmit="return doSearch()">
+        <input autocomplete="off" type="text" id="search-text" style="outline:none" autofocus="">
+        <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+    
+  </section>
+
+
+
+
+
+  
+    
+    
+      <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+      <div class="poetry" onclick="getPoetry('jinrishici', '')">
+        <p id="poetry"><i class="fas fa-spinner u-theme-f"></i></p>
+        
+      </div>
+    
+  
+
+
+
+
+<section class="cards">
+  
+    
+      <div class="card">
+        <h3><i class="fa fa-book blue"></i>&nbsp;MOOC</h3>
+        
+        <ul>
+          
+            
+              <li>
+                <a onclick="window.open(&#34;https://www.xuetangx.com/&#34;, '_blank');" one-link-mark="yes" rel="nofollow" 
+                  tooltip-text="" onmouseover="showTooltip(this);" onmouseout="hideTooltip();">
+                  学堂在线</a>
+              </li>
+            
+          
+            
+              <li>
+                <a onclick="window.open(&#34;https://www.icourse163.org/&#34;, '_blank');" one-link-mark="yes" rel="nofollow" 
+                  tooltip-text="" onmouseover="showTooltip(this);" onmouseout="hideTooltip();">
+                  icourse163</a>
+              </li>
+            
+          
+            
+              <li>
+                <a onclick="window.open(&#34;https://open.163.com/&#34;, '_blank');" one-link-mark="yes" rel="nofollow" 
+                  tooltip-text="" onmouseover="showTooltip(this);" onmouseout="hideTooltip();">
+                  网易公开课</a>
+              </li>
+            
+          
+            
+              <li>
+                <a onclick="window.open(&#34;https://www.coursera.org/&#34;, '_blank');" one-link-mark="yes" rel="nofollow" 
+                  tooltip-text="" onmouseover="showTooltip(this);" onmouseout="hideTooltip();">
+                  Coursera</a>
+              </li>
+            
+          
+            
+              <li>
+                <a onclick="window.open(&#34;https://www.coursade.com/&#34;, '_blank');" one-link-mark="yes" rel="nofollow" 
+                  tooltip-text="" onmouseover="showTooltip(this);" onmouseout="hideTooltip();">
+                  Coursade</a>
+              </li>
+            
+          
+            
+              <li>
+                <a onclick="window.open(&#34;https://www.edx.org/edxchina&#34;, '_blank');" one-link-mark="yes" rel="nofollow" 
+                  tooltip-text="" onmouseover="showTooltip(this);" onmouseout="hideTooltip();">
+                  edX China</a>
+              </li>
+            
+          
+        </ul>
+        
+      </div>
+    
+  
+    
+      <div class="card">
+        <h3><i class="fas fa-code indigo"></i>&nbsp;DEV</h3>
+        
+        <ul>
+          
+            
+              <li>
+                <a onclick="window.open(&#34;https://www.nerdfonts.com/&#34;, '_blank');" one-link-mark="yes" rel="nofollow" 
+                  tooltip-text="" onmouseover="showTooltip(this);" onmouseout="hideTooltip();">
+                  Nerd Fonts</a>
+              </li>
+            
+          
+            
+              <li>
+                <a onclick="window.open(&#34;https://fontawesome.com/icons?d=gallery&#34;, '_blank');" one-link-mark="yes" rel="nofollow" 
+                  tooltip-text="" onmouseover="showTooltip(this);" onmouseout="hideTooltip();">
+                   <i class="fab fa-font-awesome"></i>&nbsp;FontAwesome</a>
+              </li>
+            
+          
+            
+              <li>
+                <a onclick="window.open(&#34;https://www.iconfont.cn/&#34;, '_blank');" one-link-mark="yes" rel="nofollow" 
+                  tooltip-text="" onmouseover="showTooltip(this);" onmouseout="hideTooltip();">
+                   <i class="fas fa-icons"></i>&nbsp;Iconfont</a>
+              </li>
+            
+          
+            
+              <li>
+                <a onclick="window.open(&#34;https://www.harmonyos.com/cn/home/&#34;, '_blank');" one-link-mark="yes" rel="nofollow" 
+                  tooltip-text="" onmouseover="showTooltip(this);" onmouseout="hideTooltip();">
+                  HarmonyOS</a>
+              </li>
+            
+          
+            
+              <li>
+                <a onclick="window.open(&#34;https://openharmony.gitee.com&#34;, '_blank');" one-link-mark="yes" rel="nofollow" 
+                  tooltip-text="" onmouseover="showTooltip(this);" onmouseout="hideTooltip();">
+                  OpenHarmony</a>
+              </li>
+            
+          
+        </ul>
+        
+      </div>
+    
+  
+    
+      <div class="card">
+        <h3><i class="fa fa-comments pink"></i>&nbsp;COMMUNITY</h3>
+        
+        <ul>
+          
+            
+              <li>
+                <a onclick="window.open(&#34;https://www.mcbbs.net/&#34;, '_blank');" one-link-mark="yes" rel="nofollow" 
+                  tooltip-text="" onmouseover="showTooltip(this);" onmouseout="hideTooltip();">
+                  MCbbs</a>
+              </li>
+            
+          
+            
+              <li>
+                <a onclick="window.open(&#34;https://juejin.im/&#34;, '_blank');" one-link-mark="yes" rel="nofollow" 
+                  tooltip-text="" onmouseover="showTooltip(this);" onmouseout="hideTooltip();">
+                  掘金</a>
+              </li>
+            
+          
+            
+              <li>
+                <a onclick="window.open(&#34;https://www.deepinos.org/&#34;, '_blank');" one-link-mark="yes" rel="nofollow" 
+                  tooltip-text="" onmouseover="showTooltip(this);" onmouseout="hideTooltip();">
+                  DOSU</a>
+              </li>
+            
+          
+            
+              <li>
+                <a onclick="window.open(&#34;https://linux.cn/&#34;, '_blank');" one-link-mark="yes" rel="nofollow" 
+                  tooltip-text="" onmouseover="showTooltip(this);" onmouseout="hideTooltip();">
+                  Linux中国</a>
+              </li>
+            
+          
+            
+              <li>
+                <a onclick="window.open(&#34;https://www.openatom.org/#/&#34;, '_blank');" one-link-mark="yes" rel="nofollow" 
+                  tooltip-text="" onmouseover="showTooltip(this);" onmouseout="hideTooltip();">
+                  OpenAtom</a>
+              </li>
+            
+          
+        </ul>
+        
+      </div>
+    
+  
+    
+      <div class="card">
+        <h3><i class="fa fa-heart red"></i>&nbsp;thanks</h3>
+        
+        <ul>
+          
+            
+              <li>
+                <a onclick="window.open(&#34;https://gohugo.io/&#34;, '_blank');" one-link-mark="yes" rel="nofollow" 
+                  tooltip-text="" onmouseover="showTooltip(this);" onmouseout="hideTooltip();">
+                  Hugo</a>
+              </li>
+            
+          
+            
+              <li>
+                <a onclick="window.open(&#34;https://github.com/rz3n/hugo-theme-freshstart&#34;, '_blank');" one-link-mark="yes" rel="nofollow" 
+                  tooltip-text="" onmouseover="showTooltip(this);" onmouseout="hideTooltip();">
+                  freshstart</a>
+              </li>
+            
+          
+            
+              <li>
+                <a onclick="window.open(&#34;https://hitokoto.cn/&#34;, '_blank');" one-link-mark="yes" rel="nofollow" 
+                  tooltip-text="" onmouseover="showTooltip(this);" onmouseout="hideTooltip();">
+                  Hitokoto</a>
+              </li>
+            
+          
+            
+              <li>
+                <a onclick="window.open(&#34;https://www.jinrishici.com/&#34;, '_blank');" one-link-mark="yes" rel="nofollow" 
+                  tooltip-text="" onmouseover="showTooltip(this);" onmouseout="hideTooltip();">
+                  今日诗词</a>
+              </li>
+            
+          
+            
+              <li>
+                <a onclick="window.open(&#34;https://www.heweather.com/&#34;, '_blank');" one-link-mark="yes" rel="nofollow" 
+                  tooltip-text="" onmouseover="showTooltip(this);" onmouseout="hideTooltip();">
+                  HeWeather</a>
+              </li>
+            
+          
+            
+              <li>
+                <a onclick="window.open(&#34;https://github.com/hustcc/ribbon.js&#34;, '_blank');" one-link-mark="yes" rel="nofollow" 
+                  tooltip-text="" onmouseover="showTooltip(this);" onmouseout="hideTooltip();">
+                  ribbon.js</a>
+              </li>
+            
+          
+            
+              <li>
+                <a onclick="window.open(&#34;https://fontawesome.com/icons?d=gallery&#34;, '_blank');" one-link-mark="yes" rel="nofollow" 
+                  tooltip-text="" onmouseover="showTooltip(this);" onmouseout="hideTooltip();">
+                   <i class="fab fa-font-awesome"></i>&nbsp;FontAwesome</a>
+              </li>
+            
+          
+        </ul>
+        
+      </div>
+    
+  
+</section>
+
+
+
+    </main>
+
+    
+    <div id="tooltip">
+      <i class="far fa-hand-point-right u-theme-f"></i>&nbsp;
+      <p id="tooltiptext">tooltip</p>
+    </div>
+    
+
+    
+    <div id="back2top-btn" onclick="smoothScrollToTop();">
+      <i class="fas fa-rocket u-theme-f"></i>
+    </div>
+    
+
+  
+  
+    <footer>
+      
+      
+      
+        <div class="footer-line">
+          <span> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"> <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script> <div> <meting-js server="netease" type="playlist" id="135243058" theme="#FB81A3" fixed="true" autoplay="false" loop="all" order="random" preload="auto" list-folded="ture" list-max-height="500px" lrc-type="1"> </meting-js> </div> </span>
+        </div>
+      
+      
+
+      
+      
+      
+
+      
+      
+        <div class="footer-line">
+          <i class="far fa-copyright fa-fw"></i>
+          <span>
+             鲸一 - 
+            
+            2021&nbsp;&nbsp;</span>
+        </div>
+      
+      
+
+      
+      
+        <div class="footer-line">
+          <span> 看清生活 依旧生活</span>
+        </div>
+      
+      
+
+    </footer>
+  
+
+
+
+
+<script>
+  var timer = setInterval(function () {
+    localTimer();
+  }, 1000);
+
+  function addZero(i) {
+    if (i < 10) {
+      i = "0" + i;
+    }
+    return i;
+  }
+
+  function localTimer() {
+    var today = new Date();
+    var time = addZero(today.getHours()) + ":" + addZero(today.getMinutes()) + ":" + addZero(today.getSeconds());
+    document.getElementById("current_time").innerHTML = time;
+
+    var date = today.getDate() + ' . ' + (today.getMonth() + 1) + ' . ' + today.getFullYear();
+    document.getElementById("current_date").innerHTML = date;
+  }
+</script>
+
+
+
+<script>
+  
+
+  WIDGET = {
+    CONFIG: {
+      "modules": "02",
+      "background": 5,
+      "tmpColor": "rgb(200, 200, 200)",
+      "tmpSize": "0.7rem",
+      "cityColor": "rgb(200, 200, 200)",
+      "citySize": 16,
+      "aqiSize": 16,
+      "weatherIconSize": "0.7rem",
+      "alertIconSize": 18,
+      "padding": "0px 0px 0px 0px",
+      "shadow": "0",
+      "language": "auto",
+      "borderRadius": "5",
+      "fixed": "false",
+      "vertical": "center",
+      "horizontal": "center",
+      "key": "ee09c5e1a7cf4d5396120af9c5d44111"
+    }
+  }
+</script>
+<script src="https://widget.heweather.net/simple/static/js/he-simple-common.js?v=1.1"></script>
+
+
+
+
+
+
+
+
+
+  
+    
+  
+    
+  
+
+
+</body>
+</html>
